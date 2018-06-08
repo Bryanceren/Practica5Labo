@@ -2,27 +2,29 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+*/
 package THREADS;
 
+import static java.lang.Thread.sleep;
+import static java.lang.Thread.yield;
 import javax.swing.JLabel;
 
 /**
  *
  * @author LN710Q
  */
-public class AnimalThread extends Thread{
+public class AnimalThread2 extends Thread{
     private String nombre;
     private int limite;
     private JLabel animal;
     private int x;
     private int y;
     
-    AnimalThread(){
+    AnimalThread2(){
         
     }
 
-    public AnimalThread(String nombre, int x, int y,  int limite,JLabel animal) {
+    public AnimalThread2(String nombre, int x, int y,  int limite,JLabel animal) {
         this.nombre = nombre;
         this.x = x;
         this.y = y;
@@ -35,7 +37,7 @@ public class AnimalThread extends Thread{
     @Override
     public void run()
     {
-        for(int i=x; i<=this.limite;i+=20){
+        for(int i=x; i>=this.limite;i-=20){
             System.out.println(this.nombre + " avanza");
             this.animal.setLocation(i,y);
             try{

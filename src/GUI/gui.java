@@ -6,6 +6,7 @@
 package GUI;
 
 import THREADS.AnimalThread;
+import THREADS.AnimalThread2;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,17 +42,10 @@ public class gui extends JFrame {
         for (int i = 0; i < 3; i++) {
             labels[i] = new JLabel();
             labels[i].setIcon(new ImageIcon(getClass().getResource(nombres[i] + ".gif")));
-            labels[i].setBounds(10, (i * 240) + 10, 200, 200);
+            labels[i].setBounds(10, (i * 200) + 10, 200, 200);
             container.add(labels[i]);
         }
-        /*
-        for (int i = 0; i < 3; i++) {
-            labels[i] = new JLabel();
-            labels[i].setIcon(new ImageIcon(getClass().getResource(nombres[i] + ".gif")));
-            labels[i].setBounds(10, (i * -240) + 10, 200, 200);
-            container.add(labels[i]);
-        }
-         */
+        
         inicio.setBounds(10, 0, 100, 30);
         regresar.setBounds(150, 0, 100, 30);
         container.add(inicio);
@@ -73,20 +67,12 @@ public class gui extends JFrame {
         regresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AnimalThread canguro = new AnimalThread("canguro", labels[0].getX(), labels[0].getY(), 0, labels[0]);
-                AnimalThread tortuga = new AnimalThread("tortuga", labels[1].getX(), labels[1].getY(), 0, labels[1]);
-                AnimalThread dragon = new AnimalThread("dragon", labels[2].getX(), labels[2].getY(), 0, labels[2]);
+                AnimalThread2 canguro = new AnimalThread2("canguro", labels[0].getX(), labels[0].getY(), 0, labels[0]);
+                AnimalThread2 tortuga = new AnimalThread2("tortuga", labels[1].getX(), labels[1].getY(), 0, labels[1]);
+                AnimalThread2 dragon = new AnimalThread2("dragon", labels[2].getX(), labels[2].getY(), 0, labels[2]);
                 canguro.start();
                 tortuga.start();
                 dragon.start();
-                for (int i = 0; i < 3; i++) {
-                    labels[i] = new JLabel();
-                    labels[i].setIcon(new ImageIcon(getClass().getResource(nombres[i] + ".gif")));
-                    labels[i].setBounds(510, (i * (240)) + 10, 200, 200);
-                    container.add(labels[i]);
-                   
-
-                }
             }
         });
         setSize(700, 650);
